@@ -12,4 +12,8 @@ export class BasePage {
             waitUntil: 'domcontentloaded'
         })
     }
+
+    async closeAlert() {
+        await this.page.getByRole('button', { name: 'Закрыть' }).click()
+    }
 }
