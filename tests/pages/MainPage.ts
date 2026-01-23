@@ -11,6 +11,10 @@ export class MainPage extends BasePage {
     private readonly headerAddButtonPopUpListLocator: Locator;
     private readonly headerNotificationsPopUpLocator: Locator;
     private readonly authorizationModalLocator: Locator;
+    private readonly menuButtonLocator: Locator;
+    private readonly openMenuAriaLocator: Locator;
+    private readonly popupAletLocator: Locator;
+    private readonly changeThemeButtonLocator: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -30,9 +34,25 @@ export class MainPage extends BasePage {
             .locator('iframe[title="Multipass"]')
             .contentFrame()
             .locator('div[role="form"]');
+        this.menuButtonLocator = this.page.getByRole('button', { name: 'Открыть меню навигации' });
+        this.openMenuAriaLocator = this.page.locator('.menu-content-module__menuOpen');
+        this.popupAletLocator = this.page.getByRole('button', { name: 'Ок', exact: true })
+        this.changeThemeButtonLocator = this.page.getByRole('button', { name: 'Переключить на светлую тему' })
 
 
 
+    }
+
+    async changeThemeToWhite() {
+        await this.changeThemeButtonLocator.click();
+    }
+
+    async openFullMenu() {
+        await this.menuButtonLocator.click();
+    }
+
+    async closePopalert(){
+        await this.popupAletLocator.click();
     }
 
     async openAddPopupList() {
@@ -75,6 +95,15 @@ export class MainPage extends BasePage {
     async authorizationModalHasCorrectAriaSnapshot() {
         await expect(this.authorizationModalLocator)
             .toMatchAriaSnapshot({ name: 'authorizationModal.yml' })
+    }
+
+    async fullMenuHasCorrectAriaSnapshot() {
+        await expect(this.openMenuAriaLocator)
+            .toMatchAriaSnapshot({ name: 'fullMenuSnapshot.yml' })
+    }
+
+    async checkThemeAttributeValue(value: "dark" | 'light') {
+        await expect(this.page.locator('html')).toHaveAttribute('data-themeid', value)
     }
 
 }
