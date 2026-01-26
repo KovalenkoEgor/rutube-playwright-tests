@@ -7,7 +7,7 @@ const authFile = path.join(__dirname, '../playwright/.auth/user.json');
 
 chromium.use(stealth());
 
-test('Авторизация', async () => {
+test('AuthSetup', async () => {
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
