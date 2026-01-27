@@ -18,6 +18,19 @@ export class BasePage {
       name: ariaName,
     });
   }
+
+  protected async checkLayotByScreenshot(locator: Locator, screenShotName: string) {
+    await expect(locator).toHaveScreenshot(screenShotName);
+  }
+
+  protected async hideElement(selector: string) {
+    await this.page.evaluate((selector) => {
+      const header = document.querySelector(selector);
+      if (header) {
+        (header as HTMLElement).style.display = 'none';
+      }
+    }, selector);
+  }
 }
 
 // async closeAlert() {
