@@ -16,6 +16,6 @@ export class SubscriptionPage extends BasePage {
   }
 
   async open() {
-    await this.page.goto('https://rutube.ru/my/subscriptions/', { waitUntil: 'domcontentloaded' });
+    await this.page.goto('https://rutube.ru/my/subscriptions/', { waitUntil: 'load' });
   }
 }

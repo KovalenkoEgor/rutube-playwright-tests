@@ -12,7 +12,7 @@ export class CategoriesPage extends BasePage {
   }
 
   async open() {
-    await this.page.goto('https://rutube.ru/categories/', { waitUntil: 'domcontentloaded' });
+    await this.page.goto('https://rutube.ru/categories/', { waitUntil: 'load' });
   }
 
   async closeAlert() {

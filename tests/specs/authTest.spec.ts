@@ -12,7 +12,7 @@ test('AuthSetup', async () => {
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await page.goto('https://rutube.ru');
+  await page.goto('https://rutube.ru', { waitUntil: 'load' });
   await page.getByRole('button', { name: 'Закрыть' }).click();
   await page.getByRole('button', { name: 'Вход и регистрация' }).click();
   await page

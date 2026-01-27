@@ -9,7 +9,7 @@ export class BasePage {
 
   async open(): Promise<void> {
     await this.page.goto('https://rutube.ru/', {
-      waitUntil: 'domcontentloaded',
+      waitUntil: 'load',
     });
   }
 
