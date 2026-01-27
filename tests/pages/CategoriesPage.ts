@@ -14,7 +14,7 @@ export class CategoriesPage extends BasePage {
   }
 
   async open() {
-    this.page.goto('https://rutube.ru/categories/', { waitUntil: 'domcontentloaded' });
+    await this.page.goto('https://rutube.ru/categories/', { waitUntil: 'domcontentloaded' });
   }
 
   async closeAlert() {
