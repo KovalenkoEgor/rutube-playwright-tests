@@ -31,8 +31,12 @@ export class BasePage {
       }
     }, selector);
   }
-}
 
-// async closeAlert() {
-//     await this.page.getByRole('button', { name: 'Закрыть' }).click()
-// }
+  async closeCookieandGeo() {
+    await this.page.getByRole('button', { name: 'Ок' }).click();
+  }
+
+  async closeAlert() {
+    await this.page.getByRole('button', { name: 'Закрыть' }).click();
+  }
+}

@@ -1,10 +1,12 @@
 import { test as base } from '@playwright/test';
 import { MainPage } from '../pages/MainPage';
 import { CategoriesPage } from '../pages/CategoriesPage';
+import { ForCreaterPage } from '../pages/ForCreatorsPage';
 
 type MyFixtures = {
   mainPage: MainPage;
   categoriesPage: CategoriesPage;
+  // forCreatersPage: ForCreaterPage;
 };
 
 // Extend base test by providing "todoPage" and "settingsPage".
